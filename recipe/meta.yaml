@@ -1,4 +1,4 @@
-{% set version = '0.5.7' %}
+{% set version = "0.6.1" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/xlsx_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/xlsx/xlsx_{{ version }}.tar.gz
-  sha256: 36727bc330c281dab8a028fab2dde92d032345974b15e3dde920ee16dc6db363
+  sha256: a580bd16b5477c1c185bf681c12c1ffff4088089f97b6a37997913d93ec5a8b4
 
 build:
   number: 0

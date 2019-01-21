@@ -1,5 +1,4 @@
-{% set version = '0.5.7' %}
-
+{% set version = '0.6.1' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,26 +7,26 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: xlsx_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/xlsx_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/xlsx/xlsx_{{ version }}.tar.gz
-  sha256: 36727bc330c281dab8a028fab2dde92d032345974b15e3dde920ee16dc6db363
+    - {{ cran_mirror }}/src/contrib/xlsx_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/xlsx/xlsx_{{ version }}.tar.gz
+  sha256: a580bd16b5477c1c185bf681c12c1ffff4088089f97b6a37997913d93ec5a8b4
 
 build:
+  merge_build_host: True  # [win]
   number: 0
-  # r-rjava and r-xlsxjars not available under win
-  skip: true  # [win]
-
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-rjava
     - r-xlsxjars
-
   run:
     - r-base
     - r-rjava
@@ -35,17 +34,36 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('xlsx')"  # [not win]
+    - $R -e "library('xlsx')"           # [not win]
     - "\"%R%\" -e \"library('xlsx')\""  # [win]
 
 about:
-  home: http://code.google.com/p/rexcel/, http://groups.google.com/group/R-package-xlsx
+  home: https://github.com/dragua/rexcel, http://groups.google.com/group/R-package-xlsx
   license: GPL-3
   summary: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file
     formats.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
+    - conda-forge/r
+
+# Package: xlsx
+# Type: Package
+# Title: Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files
+# Version: 0.6.1
+# Date: 2018-06-07
+# Imports: rJava, xlsxjars, grDevices, utils
+# LazyLoad: yes
+# Author: Adrian A. Dragulescu, Cole Arendt
+# Maintainer: Adrian A. Dragulescu <adrian.dragulescu@gmail.com>
+# Description: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file formats.
+# License: GPL-3
+# URL: https://github.com/dragua/rexcel, http://groups.google.com/group/R-package-xlsx
+# BugReports: https://github.com/dragua/rexcel/issues
+# SystemRequirements: java (>= 1.6)
+# NeedsCompilation: no
+# Packaged: 2018-06-11 00:21:04 UTC; adrian
+# Repository: CRAN
+# Date/Publication: 2018-06-11 05:50:21 UTC

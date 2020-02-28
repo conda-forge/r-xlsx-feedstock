@@ -1,4 +1,4 @@
-{% set version = '0.6.1' %}
+{% set version = "0.6.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/xlsx_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/xlsx/xlsx_{{ version }}.tar.gz
-  sha256: a580bd16b5477c1c185bf681c12c1ffff4088089f97b6a37997913d93ec5a8b4
+  sha256: e5a9b8ead1b4502e7a1143a1d842d4994dd92f333a95a00d81a27ef62c5e035e
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -40,10 +40,9 @@ test:
 about:
   home: https://github.com/dragua/rexcel, http://groups.google.com/group/R-package-xlsx
   license: GPL-3
-  summary: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file
-    formats.
+  summary: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file formats.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:

@@ -1,4 +1,4 @@
-{% set version = "0.6.3" %}
+{% set version = "0.6.4.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/xlsx_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/xlsx/xlsx_{{ version }}.tar.gz
-  sha256: e5a9b8ead1b4502e7a1143a1d842d4994dd92f333a95a00d81a27ef62c5e035e
+  sha256: 6d5b7a3e6939499a259f52a8c0a5ae2031eab54bb6a3520937e23e9ae817b4b5
 
 build:
   merge_build_host: true  # [win]

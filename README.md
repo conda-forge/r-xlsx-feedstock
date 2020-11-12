@@ -5,11 +5,9 @@ Home: https://github.com/dragua/rexcel, http://groups.google.com/group/R-package
 
 Package license: GPL-3
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-xlsx-feedstock/blob/master/LICENSE.txt)
 
 Summary: Provide R functions to read/write/format Excel 2007 and Excel 97/2000/XP/2003 file formats.
-
-
 
 Current build status
 ====================

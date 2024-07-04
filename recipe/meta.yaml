@@ -1,6 +1,5 @@
 {% set version = "0.6.5" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-xlsx
@@ -13,8 +12,7 @@ source:
   sha256: 378c5ed475a3d7631ea1ea13e0a69d619c1a52260922abda42818752dbb32107
 
 build:
-  merge_build_host: true  # [win]
-  number: 2
+  number: 3
   noarch: generic
   rpaths:
     - lib/R/lib/
